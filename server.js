@@ -5,7 +5,6 @@ const os = require('os');
 const app = express();
 
 const numCpu = os.cpus().length;
-
 app.get('/', (req, res) => {
   setTimeout(() => {
     // codeStuff
@@ -15,6 +14,7 @@ app.get('/', (req, res) => {
   cluster.worker.kill(); 
 });
 
+// using clusters
 if (cluster.isMaster) {
   for (let i = 0; i < numCpu; i++) {
     cluster.fork();
